@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PPE Shield | AI Safety Detector</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- BoxIcons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Video Stream -->
+        <div class="camera-view">
+            <video id="webcam" autoplay playsinline muted></video>
+            <canvas id="overlay"></canvas>
+            
+            <div class="scanning-fx"></div>
+        </div>
+        <!-- UI Overlay -->
+        <div class="ui-overlay">
+            <header class="top-bar glass">
+                <div class="logo">
+                    <i class='bx bx-shield-quarter'></i>
+                    <span>PPE Shield</span>
+                </div>
+                <div class="status-indicator">
+                    <span class="dot" id="statusDot"></span>
+                    <span id="statusText">Loading AI...</span>
+                </div>
+            </header>
+            <div class="controls-container">
+                <div class="metrics glass">
+                    <div class="metric">
+                        <span class="label">Targets</span>
+                        <span class="value" id="detectionCount">0</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">FPS</span>
+                        <span class="value" id="fpsDisplay">--</span>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="btn-primary glass" id="switchCameraBtn">
+                        <i class='bx bx-camera-party'></i>
+                        <span class="btn-text">Camera</span>
+                    </button>
+                    <button class="btn-primary glass" id="toggleScanBtn" disabled>
+                        <i class='bx bx-scan'></i>
+                        <span id="scanBtnText">Start Scan</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="model-info">
+                *Demo: COCO-SSD Object Model
+            </div>
+        </div>
+    </div>
+    <!-- TensorFlow.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+    <!-- Main Script -->
+    <script src="main.js"></script>
+</body>
+</html>
